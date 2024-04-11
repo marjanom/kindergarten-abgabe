@@ -1,0 +1,34 @@
+
+<form [formGroup]="addKindergardenForm" (ngSubmit)="onSubmit()">
+    <h2>Register your Kindergarden!</h2>
+    <div *ngIf="image"><img class="kindergarden-image" [src]="image" alt="Kindergarten Image"></div>
+    <input type="file" id="image" name="image" (change)="onFileChange($event)" accept="image/*">
+    <input placeholder="Name" type="text" formControlName="name"><br />
+    <input placeholder="Address" type="text" formControlName="address"><br />
+    <input placeholder="Available Spots" type="number" formControlName="availableSpots"><br />
+    <button type="submit">Submit</button>
+</form>
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <p class="col-xl-2 col-lg-3">Image</p>
+        <p class="col-xl-2 col-lg-3">Name</p>
+        <p class="col-xl-2 col-lg-1">Address</p>
+        <p class="col-xl-2 col-lg-1">Available Spots</p>
+        <p class="col-xl-2 col-lg-1"></p>
+    </div>
+    <div *ngFor="let kindergarden of storeService.kindergardens" class="row justify-content-center align-items-center">
+        <p class="col-xl-2 col-lg-3 "><img class="kindergarden-image" [src]="kindergarden.image" alt="Kindergarten Image"></p>
+        <p class="col-xl-2 col-lg-3">{{kindergarden.name}}</p>
+        <p class="col-xl-2 col-lg-1">{{kindergarden.address}}</p>
+        <p class="col-xl-2 col-lg-1">{{kindergarden?.availableSpots}}</p>
+        <div class="col-xl-2 col-lg-1">
+            <button (click)="cancelRegistration(kindergarden?.id)">delete kindergarden</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <button [ngClass]="page == currentPage ? 'active' : ''" (click)="selectPage(page)" type="button" *ngFor="let page of returnAllPages()">{{page}}</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="text-center">
+    <img width="500" class="text-center m-auto" src={{imagePath}}>
+</div>
+<div class="d-flex align-items-center w-100 justify-content-around">
+    <h1>{{ title }}</h1>
+    <section class="p-menu1">
+        <nav id="navbar" class="navigation" role="navigation">
+            <input id="toggle1" type="checkbox" />
+            <label class="hamburger1" for="toggle1">
+                <div class="top"></div>
+                <div class="meat"></div>
+                <div class="bottom"></div>
+            </label>
+            <nav class="menu1">
+                <a [routerLink]="['/dashboard']">Dashboard</a>&nbsp;&nbsp;
+                <a [routerLink]="['/about']">About</a>&nbsp;&nbsp;
+                <a [routerLink]="['/add-kindergarden']">Add Kindergarden</a>
+                <a [routerLink]="['/kindergarden-list']">Kindergarden Detail</a>
+            </nav>
+        </nav>
+    </section>
+</div>
+
